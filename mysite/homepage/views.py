@@ -4,11 +4,6 @@ import MySQLdb
 
 # Create your views here.
 
-
-def index(request):
-    return render(request, 'homepage.html')
-
-
 def list_view(request):
     conn = MySQLdb.connect(
         user="nakazawalab",
@@ -22,13 +17,17 @@ def list_view(request):
 
     # SQL実行
     # selfIntroductionテーブルから全レコード取り出す
-    sql = "SELECT * from user"
+
+
+    sql = "SELECT * from users"
+
     cur.execute(sql)
 
     # 実行結果の取得
     rows = cur.fetchall()
     cur.close
     conn.close
-    print(rows)
 
-    return render(request, 'homepage.html', context={'data': rows})
+
+    return render(request, 'homepage.html',context={'data':rows})
+
