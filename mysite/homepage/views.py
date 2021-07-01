@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 import MySQLdb
+from . forms import UserForm
 
 # Create your views here.
 
@@ -30,4 +31,17 @@ def list_view(request):
 
 
     return render(request, 'homepage.html',context={'data':rows})
+
+
+def showCreateUserForm(request):
+    #フォームを変数にセット
+    form = UserForm()
+ 
+    context = {
+        'userForm':form,
+    }
+ 
+    #detail.htmlへデータを渡す
+    return render(request, 'createUser.html',context)
+
 
