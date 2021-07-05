@@ -2,7 +2,8 @@ from django.urls import path
 from . import views
  
 urlpatterns = [
-    path('', views.showUsers, name='showUsers'),
+    #とりあえずいらない
+    #path('', views.showUsers, name='showUsers'),
 
     #ユーザの詳細情報を表示する処理を呼び出す
     #path('<int:id>', views.showDetail, name='showDetail'),
@@ -14,5 +15,5 @@ urlpatterns = [
     #path('<int:id>/edit', views.showEditUserForm, name='showEditUserForm'),
     path('searchForm', views.showSearchForm, name='showSearchForm'),
     path('searchResult', views.searchResult, name='searchResult'),
-    path('login', views.login, name='login'),
+    path('', views.login, name='login'),
 ]

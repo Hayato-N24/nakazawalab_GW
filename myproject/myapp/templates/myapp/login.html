@@ -1,5 +1,5 @@
-{% extends 'myapp/base.html' %}
-{% load bootstrap4 %}
+{% extends 'myapp/base2.html' %}
+
 
 {% block content %}
 <form method="GET" action="{% url 'login' %}" class="form">
@@ -7,6 +7,7 @@
     
     <button type="submit" >ログイン</button>   
 </form>
+<a href="{% url 'showCreateUserForm' %}">新規登録</a>
 
 {% if messages %}
 {% for message in messages %}

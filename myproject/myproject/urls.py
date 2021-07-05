@@ -20,5 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     #usersのURLの場合、myappのurls.pyを呼び出す
-    path('users/', include('myapp.urls')),
+    path('', include('myapp.urls')),
 ]
