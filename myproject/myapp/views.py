@@ -3,6 +3,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from .models import UserInfo
 from .forms import UserForm
+#検索用モジュール
+from django.contrib import messages
+from django.db.models import Q
 # ユーザ情報を辞書に格納して、users.htmlに返す
 def showUsers(request):
     usefinfo = UserInfo.objects.all()
@@ -62,3 +65,20 @@ def showEditUserForm(request,id):
     return render(request, 'myapp/edit.html',context)
 
 
+def showSearchForm(request):
+    return render(request, 'myapp/showSearchForm.html')
+
+def search(request):
+    model = UserInfo.objects
+
+    keyword = request.GET.get('keyword')
+
+    if keyword:
+        print(keyword)
+        model = model.filter(
+            userName__iexact = keyword
+        )
+        messages.success(request, "「{}」の検索結果".format(keyword))
+        print(model)
+    
+    return render(request, 'myapp/searchResult.html', {'result':model})

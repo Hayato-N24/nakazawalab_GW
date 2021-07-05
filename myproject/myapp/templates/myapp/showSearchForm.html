@@ -1,0 +1,14 @@
+{% extends "myapp/base.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+<form method="GET" action="{% url 'search' %}" class="form">
+    <input type="text" name="keyword" >
+    <a href="{% url 'search' %}">
+    <button type="submit" >検索</button>
+    </a>
+    
+
+</form>
+
+{% endblock %}

@@ -11,3 +11,4 @@ class UserForm(forms.ModelForm):
            'like':'好きな食べ物',
            'dislike':'嫌いな食べ物',
            }
+
