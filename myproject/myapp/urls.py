@@ -12,6 +12,7 @@ urlpatterns = [
     path('add', views.addUser, name='addUser'),
     #ユーザ編集するフォームを呼び出す
     #path('<int:id>/edit', views.showEditUserForm, name='showEditUserForm'),
-    path('searchForm', views.showSearchForm, name='searchForm'),
-    path('searchResult', views.search, name='search'),
+    path('searchForm', views.showSearchForm, name='showSearchForm'),
+    path('searchResult', views.searchResult, name='searchResult'),
+    path('login', views.login, name='login'),
 ]

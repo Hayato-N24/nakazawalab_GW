@@ -3,7 +3,11 @@
 
 {% block content %}
 
-
+<p>
+    {% for message in messages %}
+    {{ message }}
+    {%endfor%}
+</p>
 <table border="1" style="border-collapse: collapse">
     <thead>
     <tr>
@@ -15,7 +19,7 @@
     </thead>
     <tbody> 
    
-    {% for result in result%}
+    {% for result in result %}
     <tr>
     <!-- 4列分ユーザ情報を出力 -->
     <td>{{result.userName}}</td>
@@ -27,7 +31,7 @@
   
     </tbody>
     </table>
-    <a href="{% url 'searchForm' %}">検索画面に戻る</a>
+    <a href="{% url 'showSearchForm' %}">検索画面に戻る</a>
 
 
 {% endblock %}

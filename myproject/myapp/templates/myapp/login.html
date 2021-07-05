@@ -1,0 +1,17 @@
+{% extends 'myapp/base.html' %}
+{% load bootstrap4 %}
+
+{% block content %}
+<form method="GET" action="{% url 'login' %}" class="form">
+    <input type="text" name="keyword" >
+    
+    <button type="submit" >ログイン</button>   
+</form>
+
+{% if messages %}
+{% for message in messages %}
+<p>{{ message }}</p>
+{% endfor %}
+{% endif %}
+
+{% endblock %}

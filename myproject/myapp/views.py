@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 
 from django.http import HttpResponse
 from .models import UserInfo
@@ -68,17 +68,33 @@ def showEditUserForm(request,id):
 def showSearchForm(request):
     return render(request, 'myapp/showSearchForm.html')
 
-def search(request):
+def searchResult(request):
     model = UserInfo.objects
 
     keyword = request.GET.get('keyword')
 
     if keyword:
-        print(keyword)
+       
         model = model.filter(
             userName__iexact = keyword
         )
-        messages.success(request, "「{}」の検索結果".format(keyword))
-        print(model)
+        if model.count() > 1:
+            messages.success(request, "「{}」の検索結果".format(keyword))
+        
     
     return render(request, 'myapp/searchResult.html', {'result':model})
+
+def login(request):
+    model = UserInfo.objects
+    keyword = request.GET.get('keyword')
+
+    if keyword:   
+        model = model.filter(
+            userName__iexact = keyword
+        )
+        if model.count() == 1:
+            return redirect('showSearchForm')
+        else:
+            messages.error(request, '登録されていません。')
+        
+    return render(request, 'myapp/login.html')
