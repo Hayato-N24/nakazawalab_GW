@@ -2,17 +2,20 @@
 
 
 {% block content %}
+<div class="wrapper" >
+    <h3>ユーザーネームを入力してください</h3>
 <form method="GET" action="{% url 'login' %}" class="form">
     <input type="text" name="keyword" >
     
     <button type="submit" >ログイン</button>   
 </form>
-<a href="{% url 'showCreateUserForm' %}">新規登録</a>
+<a href="{% url 'showCreateUserForm' %}">新規登録はこちら</a>
 
 {% if messages %}
 {% for message in messages %}
 <p>{{ message }}</p>
 {% endfor %}
 {% endif %}
+</div>
 
 {% endblock %}

@@ -8,30 +8,33 @@
     {{ message }}
     {%endfor%}
 </p>
-<table border="1" style="border-collapse: collapse">
-    <thead>
-    <tr>
-    <th>ユーザー名</th>
-    <th>アレルギー</th>
-    <th>好きな食べ物</th>
-    <th>嫌いな食べ物</th>
-    </tr>
-    </thead>
-    <tbody> 
-   
-    {% for result in result %}
-    <tr>
-    <!-- 4列分ユーザ情報を出力 -->
-    <td>{{result.userName}}</td>
-    <td>{{result.allergy}}</td>
-    <td>{{result.like}}</td>
-    <td>{{result.dislike}}</td>
-    </tr>
-    {% endfor %}
-  
-    </tbody>
+<div class="table-wrapper" style="display: inline-block; margin: 50px;">
+    <table border="1" class="text-center" style="border-collapse: collapse">
+        <thead>
+            <tr>
+                <th>ユーザー名</th>
+                <th>アレルギー</th>
+                <th>好きな食べ物</th>
+                <th>嫌いな食べ物</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for result in result %}
+            <tr>
+                <!-- 4列分ユーザ情報を出力 -->
+                <td>{{result.userName}}</td>
+                <td>{{result.allergy}}</td>
+                <td>{{result.like}}</td>
+                <td>{{result.dislike}}</td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
     </table>
-    <a href="{% url 'showSearchForm' %}">検索画面に戻る</a>
+</div>
+<br>
+<a href="{% url 'showSearchForm' %}">検索画面に戻る</a>
 
 
 {% endblock %}

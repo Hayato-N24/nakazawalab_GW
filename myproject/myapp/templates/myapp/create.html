@@ -2,12 +2,12 @@
 {% load bootstrap4%}
  
 {% block content %}
-    <h1>ユーザー登録</h1>
+    <h3>新規登録</h3>
  
-    <form action="{% url 'addUser' %}" method="post" class="form">
+    <form action="{% url 'addUser' %}" method="post" class="form-group">
         <!-- ユーザー登録フォームを表示 -->
         {% csrf_token %}
-        {% bootstrap_form userForm %}
+        {{ userForm }}
         <button type="submit" class="btn btn-outline-primary">登録</button>
        
     </form>

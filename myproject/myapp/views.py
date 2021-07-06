@@ -35,6 +35,7 @@ def addUser(request):
         userForm = UserForm(request.POST)
         if userForm.is_valid():
             userForm.save()
+            messages.success(request, '登録できました。ログインしてください。')
         else:
             errorhtml = '<a href="create">戻る</a>'
             return HttpResponse('そのユーザーネームは既に使用されています。' + errorhtml)
@@ -48,7 +49,7 @@ def addUser(request):
     }
  
     #user.htmlへデータを渡す
-    return render(request, 'myapp/users.html',context)
+    return render(request, 'myapp/login.html',context)
 
 
 def showEditUserForm(request,id):
