@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>ユーザの詳細情報</title>
+</head>
+<body>
+<h1>ユーザの詳細情報です。</h1>
+<!-- テーブル -->
+<table>
+<tbody>
+<tr>
+<!-- 5列分ユーザ情報を出力 -->
+<td>ID：{{userinfoDetail.id}}           <br>
+ユーザー名：{{userinfoDetail.userName}}   <br>
+アレルギー：{{userinfoDetail.allergy}}  <br>
+好きな食べ物：{{userinfoDetail.like}}    <br>
+嫌いな食べ物：{{userinfoDetail.dislike}}
+</td>
+</tr>
+</tbody>
+</table>
+<a href="{% url 'showUsers' %}">ユーザ一覧へ</a>
+</body>
