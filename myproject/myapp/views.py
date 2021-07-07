@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-
+from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 from .models import UserInfo
 from .forms import UserForm
@@ -16,6 +16,17 @@ def showUsers(request):
     }
     return render(request, 'myapp/users.html',context)
 
+# URLから受取ったidをもとにユーザの詳細情報を取得して、detail.htmlへ返す
+def showDetail(request,id):
+    #URLのidをもとに、ユーザ情報を抽出
+    userinfoDetail = get_object_or_404(UserInfo,pk=id)
+ 
+    context = {
+        'userinfoDetail':userinfoDetail,
+    }
+ 
+    #detail.htmlへデータを渡す
+    return render(request, 'myapp/detail.html',context)
 
 def showCreateUserForm(request):
     #フォームを変数にセット
@@ -105,3 +116,23 @@ def login(request):
             messages.error(request, '登録されていません。')
         
     return render(request, 'myapp/login.html')
+
+# フォームから受取ったデータをDBに更新する
+def updateUser(request,id):
+    #リクエストがPOSTの場合
+    if request.method == 'POST':
+        #idからユーザデータを取得
+        userInfo = get_object_or_404(UserInfo,pk=id)
+        #ユーザ情報と、リクエストをもとにフォームをインスタンス化
+        userForm = UserForm(request.POST,instance=userInfo)
+        if userForm.is_valid():
+            userForm.save()
+ 
+    #更新後、対象ユーザの情報を表示
+    userInfo = get_object_or_404(UserInfo,pk=id)
+    context = {
+        'userinfoDetail': userInfo,
+    }
+ 
+    #detail.htmlへデータを渡す
+    return render(request, 'myapp/detail.html',context)
